@@ -77,4 +77,63 @@ SELECT empno AS employee_number,
 	date_part('year', AGE(CURRENT_DATE, hiredate)) * 12 + DATE_PART('month', AGE(CURRENT_DATE, hiredate)) as exerience_months
 FROM emp
 WHERE MGR = 7839;
-	
+
+-- 11) List out all details of the employess where their commission is more than salary
+SELECT *
+FROM emp
+WHERE COMM > SAL;
+
+-- 12) List out all employess in the ascending Of Job for those who joined after 2nd half of 1981
+SELECT *
+FROM emp
+WHERE hiredate >('30-Jun-1981') 
+ORDER BY job asc;
+
+-- 13) List out the employee that their daily salary is more than $100 (sal/30)
+SELECT * 
+FROM emp
+WHERE sal/30 > 100;
+
+-- 14) List out all the employee who are "ANALYST" or "CLERK" and order by job DESC
+SELECT *
+FROM emp
+WHERE job='ANALYST' or job='CLERK'
+ORDER BY job DESC;
+
+-- 15) List the emps who joined on 1-MAY-81, 3-DEC-81, 17-DEC-81, 19-JAN-80 in ascending ordeer of experience seniority
+SELECT *
+FROM emp
+WHERE hiredate in(
+	'1-MAY-81',
+	'3-DEC-81',
+	'17-DEC-81',
+	'19-JAN-80')
+ORDER BY hiredate asc;
+
+-- 16) List out all employee that are working in Dept no 10 or 20. Sort Dept No ascending
+SELECT *
+FROM emp
+WHERE deptno='10' OR deptno='20'
+ORDER BY deptno ASC;
+
+-- 17) List out employee who joined in the year of 1981
+SELECT *
+FROM emp
+WHERE hiredate between '01-Jan-81' AND '31-Dec-91'
+ORDER by hiredate;
+
+-- 18) List out the employee who are joined in the month of Dec 1980
+SELECT *
+FROM emp
+WHERE hiredate between '01-Dec-80' AND '31-Dec-80';
+
+-- 19) List out all employee where annual salary ranging from 22,000 and 45,000
+SELECT *
+FROM emp
+WHERE sal*12 between 22000 and 45000;
+
+-- 20) List all employee name where the name is 5 characters long
+SELECT ename AS employee_name
+FROM emp
+WHERE length(ename)=5
+ORDER BY ename;
