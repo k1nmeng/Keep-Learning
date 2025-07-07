@@ -137,3 +137,35 @@ SELECT ename AS employee_name
 FROM emp
 WHERE length(ename)=5
 ORDER BY ename;
+
+-- 21) List the employees those are starting with ‘S’ and with five characters.
+SELECT ename AS employee_name
+FROM emp
+WHERE ename LIKE 'S%' AND length(ename)=5
+ORDER by ename;
+
+-- 22) List the employee name those are having four characters and third character must be ‘R’
+SELECT ename as employee_name
+FROM emp
+WHERE length(ename) = 4 AND ename LIKE '__R%'
+ORDER by ename;
+
+-- 23) List employee names with the 5character names starting with ‘S’ and ending with ‘H’
+SELECT ename as employee_name
+FROM emp
+WHERE length(ename) = 5 AND ename LIKE 'S___H%'
+ORDER BY ename;
+
+-- 24) List the employee who joined in January.
+SELECT ename as employee_name,
+	hiredate as hiring_date
+FROM emp
+WHERE to_char(hiredate,'mon') = 'jan'
+ORDER BY ename;
+
+-- 25) List the employee who joined in the month of which second character is ‘a’
+SELECT ename as employee_name,
+	hiredate as hiring_date
+FROM emp
+WHERE to_char(hiredate,'mon') LIKE '_a%'
+ORDER by ename;
