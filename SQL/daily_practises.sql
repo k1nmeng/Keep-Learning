@@ -169,3 +169,42 @@ SELECT ename as employee_name,
 FROM emp
 WHERE to_char(hiredate,'mon') LIKE '_a%'
 ORDER by ename;
+
+-- 26) List out the employee whose salary is 4 digits and ending with "0"
+SELECT ename as employee_name,
+	sal as salary
+FROM emp
+WHERE length(sal::text) = 4 AND sal::text like '%0'
+ORDER by ename;
+
+-- 27) List out all employes where their name having character "LL"
+SELECT ename as employee_name
+FROM emp
+WHERE ename::text like '%LL%'
+ORDER BY ename;
+
+-- 28) List the emps those who joined in 1981.
+SELECT ename as employee_name,
+	hiredate
+FROM emp
+WHERE to_char(hiredate,'yy') LIKE '81'
+ORDER BY hiredate;
+
+-- 29) List out the employee who is not belong in department 20
+SELECT ename as employee_name,
+	deptno as department_no
+FROM emp
+WHERE deptno != '20'
+ORDER by deptno;
+
+-- 30) List all the employees except ‘PRESIDENT’ & ‘MANAGER” in asc order of salaries
+SELECT ename as employee_name,
+	job as position,
+	sal as salaries
+FROM emp
+WHERE job != 'PRESIDENT' AND job != 'MANAGER'
+ORDER BY sal;
+
+SELECT *
+FROM EMP
+LIMIT 5;
